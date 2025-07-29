@@ -1,0 +1,7 @@
+crewai
+crewai_tools
+openai
+python-dotenv
+langchain
+langchain-core
+pydantic
