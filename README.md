@@ -43,8 +43,8 @@ CrewAI is a cutting-edge framework that enables you to orchestrate role-playing,
 
 #### 1️⃣ Clone & Navigate
 ```bash
-git clone https://www.github.com/jishanahmed-shaikh/crewai-agentic-ai-framework.git
-cd crewai-agentic-ai-framework
+git clone https://github.com/jishanahmed-shaikh/CrewAI-AgenticAI-Framework.git
+cd CrewAI-AgenticAI-Framework
 ```
 
 #### 2️⃣ Create Environment File
@@ -229,9 +229,9 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ## 📞 Support & Community
 
 - 💬 **Community**: [Join the CrewAI community](https://community.crewai.com/)
-- 🐦 **Twitter**: [@CrewAI](https://x.com/crewAIInc)
+- 🐦 **Twitter**: [@CrewAI](https://x.com/@crewAIInc)
 - 📧 **Help**: [Help](https://help.crewai.com)
-- 🐛 **Issues**: [GitHub Issues](https://github.com/your-repo/issues)
+- 🐛 **Issues**: [GitHub Issues](https://github.com/jishanahmed-shaikh/CrewAI-AgenticAI-Framework/issues)
 
 ---
 
