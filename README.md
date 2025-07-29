@@ -239,7 +239,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ### 🌟 Star this repo if you found it helpful! 🌟
 
-**Made with ❤️ by the Mr. Jishanahmed AR Shaikh for the AI Community**
+**Made with ❤️ by the Mr. [Jishanahmed AR Shaikh](https://linktr.ee/jishanahmedshaikh) for the AI Community**
 
 *"The future belongs to organizations that can harness the collective intelligence of AI agents working in harmony."*
 
