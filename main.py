@@ -201,32 +201,48 @@ def handle_readme_generation():
             print("❌ Invalid input! Please enter a number.")
             continue
 
-def main():
-    print("🤖 Welcome to the AI Agent System!")
-    print("\nSelect an agent:")
+def show_main_menu():
+    """Display the main menu"""
+    print("\n" + "="*50)
+    print("🤖 AI Agent System - Main Menu")
+    print("="*50)
     print("1. Dev Agent (Python Development)")
     print("2. Doc Agent (Documentation)")
     print("3. README Generator (Project Documentation)")
-    
-    try:
-        agent_choice = int(input("\nEnter your choice (1, 2, or 3): "))
+    print("4. Exit")
+    print("="*50)
+
+def handle_dev_agent():
+    """Handle Dev Agent operations"""
+    while True:
+        print("\n🐍 Dev Agent Selected!")
+        print("Choose a task:")
+        print("1. Function to Reverse a String in Python")
+        print("2. Function to Check if the number is palindrome")
+        print("3. Enter Custom Programming Task")
+        print("4. Back to Main Menu")
         
-        if agent_choice == 1:
-            print("\n🐍 Dev Agent Selected!")
-            print("Choose a task:")
-            print("1. Function to Reverse a String in Python")
-            print("2. Function to Check if the number is palindrome")
-            print("3. Enter Custom Programming Task")
+        try:
+            task_choice = int(input("\nEnter your choice (1, 2, 3, or 4): "))
             
-            task_choice = int(input("\nEnter your choice (1, 2, or 3): "))
-            
-            if task_choice in [1, 2]:
+            if task_choice == 4:
+                print("🔙 Returning to Main Menu...")
+                break
+            elif task_choice in [1, 2]:
                 task = get_dev_task(task_choice)
                 crew = Crew(
                     agents=[dev_agent],
                     tasks=[task],
                     verbose=True
                 )
+                
+                print(f"\n🚀 Starting task execution...")
+                result = crew.kickoff()
+                print("\n✅ Final Output:")
+                print(result)
+                
+                input("\n📝 Press Enter to continue...")
+                
             elif task_choice == 3:
                 print("\n✏️ Custom Task Selected!")
                 custom_task = input("Enter your custom task in natural language: ")
@@ -237,29 +253,54 @@ def main():
                         tasks=[task],
                         verbose=True
                     )
+                    
+                    print(f"\n🚀 Starting task execution...")
+                    result = crew.kickoff()
+                    print("\n✅ Final Output:")
+                    print(result)
+                    
+                    input("\n📝 Press Enter to continue...")
                 else:
                     print("❌ Task description cannot be empty!")
-                    return
             else:
-                print("❌ Invalid choice! Please select 1, 2, or 3.")
-                return
+                print("❌ Invalid choice! Please select 1, 2, 3, or 4.")
                 
-        elif agent_choice == 2:
-            print("\n📝 Doc Agent Selected!")
-            print("Choose a task:")
-            print("1. Report on Computer")
-            print("2. Report on Internet")
-            print("3. Enter Custom Documentation Task")
+        except ValueError:
+            print("❌ Invalid input! Please enter a number.")
+        except Exception as e:
+            print(f"❌ An error occurred: {e}")
+
+def handle_doc_agent():
+    """Handle Doc Agent operations"""
+    while True:
+        print("\n📝 Doc Agent Selected!")
+        print("Choose a task:")
+        print("1. Report on Computer")
+        print("2. Report on Internet")
+        print("3. Enter Custom Documentation Task")
+        print("4. Back to Main Menu")
+        
+        try:
+            task_choice = int(input("\nEnter your choice (1, 2, 3, or 4): "))
             
-            task_choice = int(input("\nEnter your choice (1, 2, or 3): "))
-            
-            if task_choice in [1, 2]:
+            if task_choice == 4:
+                print("🔙 Returning to Main Menu...")
+                break
+            elif task_choice in [1, 2]:
                 task = get_doc_task(task_choice)
                 crew = Crew(
                     agents=[doc_agent],
                     tasks=[task],
                     verbose=True
                 )
+                
+                print(f"\n🚀 Starting task execution...")
+                result = crew.kickoff()
+                print("\n✅ Final Output:")
+                print(result)
+                
+                input("\n📝 Press Enter to continue...")
+                
             elif task_choice == 3:
                 print("\n✏️ Custom Documentation Task Selected!")
                 custom_task = input("Enter your custom documentation task in natural language: ")
@@ -270,32 +311,56 @@ def main():
                         tasks=[task],
                         verbose=True
                     )
+                    
+                    print(f"\n🚀 Starting task execution...")
+                    result = crew.kickoff()
+                    print("\n✅ Final Output:")
+                    print(result)
+                    
+                    input("\n📝 Press Enter to continue...")
                 else:
                     print("❌ Task description cannot be empty!")
-                    return
             else:
-                print("❌ Invalid choice! Please select 1, 2, or 3.")
-                return
+                print("❌ Invalid choice! Please select 1, 2, 3, or 4.")
                 
-        elif agent_choice == 3:
-            print("\n📄 README Generator Selected!")
-            handle_readme_generation()
-            return
+        except ValueError:
+            print("❌ Invalid input! Please enter a number.")
+        except Exception as e:
+            print(f"❌ An error occurred: {e}")
+
+def main():
+    """Main application loop"""
+    print("🎉 Welcome to the AI Agent System!")
+    
+    while True:
+        show_main_menu()
+        
+        try:
+            choice = int(input("\nEnter your choice (1, 2, 3, or 4): "))
             
-        else:
-            print("❌ Invalid choice! Please select 1, 2, or 3.")
-            return
-        
-        # Run the selected crew
-        print(f"\n🚀 Starting task execution...")
-        result = crew.kickoff()
-        print("\n✅ Final Output:")
-        print(result)
-        
-    except ValueError:
-        print("❌ Invalid input! Please enter a number.")
-    except Exception as e:
-        print(f"❌ An error occurred: {e}")
+            if choice == 1:
+                handle_dev_agent()
+            elif choice == 2:
+                handle_doc_agent()
+            elif choice == 3:
+                print("\n📄 README Generator Selected!")
+                handle_readme_generation()
+                input("\n📝 Press Enter to continue...")
+            elif choice == 4:
+                print("\n👋 Thank you for using AI Agent System!")
+                print("🚪 Exiting...")
+                break
+            else:
+                print("❌ Invalid choice! Please select 1, 2, 3, or 4.")
+                
+        except ValueError:
+            print("❌ Invalid input! Please enter a number.")
+        except KeyboardInterrupt:
+            print("\n\n👋 Thank you for using AI Agent System!")
+            print("🚪 Exiting...")
+            break
+        except Exception as e:
+            print(f"❌ An error occurred: {e}")
 
 if __name__ == "__main__":
     main()
