@@ -18,8 +18,8 @@ doc_agent = Agent(
 
 readme_agent = Agent(
     role="README Generator",
-    goal="Create professional, detailed, and emojified README.md files for projects",
-    backstory="An expert technical writer specializing in creating engaging and comprehensive README files that help users understand and use projects effectively.",
+    goal="Create professional, detailed, and emojified README.md files from natural language project descriptions",
+    backstory="An expert technical writer and project analyst who excels at understanding project contexts from natural language descriptions and transforming them into comprehensive, professional README files. Skilled at inferring project structure, tech stack requirements, and creating engaging documentation.",
     verbose=True
 )
 
@@ -40,7 +40,7 @@ def get_dev_task(choice, custom_description=None):
     elif choice == 3:
         return Task(
             description=custom_description,
-            expected_output="Clean, well-commented Python code that solves the given problem with proper error handling and best practices.",
+            expected_output="Clean, Optimized and well-commented Python code that solves the given problem with proper error handling and best practices.",
             agent=dev_agent
         )
 
@@ -65,51 +65,50 @@ def get_doc_task(choice, custom_description=None):
             agent=doc_agent
         )
 
-def get_project_details():
-    """Collect project details from user"""
-    print("\n📋 Please provide the following project details:")
+def get_project_context():
+    """Get natural language project context from user"""
+    print("\n� PWelcome to the Professional README Generator!")
+    print("="*60)
+    print("📝 Please provide your project context in natural language.")
+    print("Include: Project title, what it does, tech stack, and key features.")
+    print("="*60)
     
-    project_name = input("Project Name: ").strip()
-    project_description = input("Project Description: ").strip()
-    project_type = input("Project Type (e.g., Web App, CLI Tool, Library, etc.): ").strip()
-    tech_stack = input("Technologies Used (e.g., Python, React, Node.js): ").strip()
-    features = input("Key Features (comma-separated): ").strip()
-    installation_notes = input("Installation Notes (optional): ").strip()
-    usage_notes = input("Usage Notes (optional): ").strip()
+    context = input("\n💬 Enter the context of your project: ").strip()
     
-    return {
-        "name": project_name,
-        "description": project_description,
-        "type": project_type,
-        "tech_stack": tech_stack,
-        "features": features,
-        "installation": installation_notes,
-        "usage": usage_notes
-    }
+    if not context:
+        print("❌ Project context cannot be empty!")
+        return None
+    
+    return context
 
-def create_readme_task(project_details, improvement_feedback=None):
-    """Create README generation task"""
+def create_readme_task(project_context, improvement_feedback=None):
+    """Create README generation task from natural language context"""
     base_description = f"""
-    Create a professional, detailed, and emojified README.md file for a project with the following details:
+    Based on the following project context, create a professional, detailed, and emojified README.md file:
     
-    Project Name: {project_details['name']}
-    Description: {project_details['description']}
-    Type: {project_details['type']}
-    Technologies: {project_details['tech_stack']}
-    Features: {project_details['features']}
-    Installation Notes: {project_details['installation']}
-    Usage Notes: {project_details['usage']}
+    PROJECT CONTEXT: {project_context}
     
-    The README should include:
-    - Attractive title with emojis
-    - Project description
+    Analyze the context and extract:
+    - Project title/name
+    - What the project does (description)
+    - Technologies used (tech stack)
+    - Key features mentioned
+    - Any other relevant information
+    
+    Create a comprehensive README that includes:
+    - Attractive title with relevant emojis
+    - Clear project description
     - Features list with emojis
-    - Installation instructions
-    - Usage examples
-    - Technology stack
+    - Technology stack section
+    - Installation instructions (infer from tech stack)
+    - Usage examples (create realistic examples based on project type)
     - Contributing guidelines
     - License section
     - Contact information placeholder
+    - Table of contents
+    - Badges (create appropriate badges based on tech stack)
+    
+    Make it professional, engaging, and comprehensive while maintaining clarity.
     """
     
     if improvement_feedback:
@@ -118,27 +117,63 @@ def create_readme_task(project_details, improvement_feedback=None):
     
     return Task(
         description=base_description,
-        expected_output="A complete, professional README.md file content with proper markdown formatting, emojis, and comprehensive sections.",
+        expected_output="A complete, professional README.md file content with proper markdown formatting, emojis, badges, and comprehensive sections that accurately reflects the project context.",
         agent=readme_agent
     )
 
-def handle_readme_generation():
-    """Handle the interactive README generation process"""
-    project_details = get_project_details()
+def get_save_location():
+    """Get save location from user with browse-like experience"""
+    print("\n💾 Where would you like to save the README.md file?")
+    print("1. Current directory")
+    print("2. Browse to another location")
     
-    if not project_details['name'] or not project_details['description']:
-        print("❌ Project name and description are required!")
+    try:
+        choice = int(input("\nEnter your choice (1 or 2): "))
+        
+        if choice == 1:
+            return "README.md"
+        elif choice == 2:
+            print("\n📁 Browse for save location:")
+            print("💡 Tip: Enter the full path where you want to save (e.g., C:\\Projects\\MyApp\\README.md)")
+            custom_path = input("Enter the full path: ").strip()
+            
+            if not custom_path:
+                print("⚠️ No path provided, using current directory.")
+                return "README.md"
+            
+            # Ensure it ends with .md
+            if not custom_path.endswith('.md'):
+                if os.path.isdir(custom_path) or custom_path.endswith('\\') or custom_path.endswith('/'):
+                    custom_path = os.path.join(custom_path, "README.md")
+                else:
+                    custom_path += "\\README.md"
+            
+            return custom_path
+        else:
+            print("❌ Invalid choice! Using current directory.")
+            return "README.md"
+            
+    except ValueError:
+        print("❌ Invalid input! Using current directory.")
+        return "README.md"
+
+def handle_readme_generation():
+    """Handle the streamlined README generation process"""
+    project_context = get_project_context()
+    
+    if not project_context:
         return
     
     while True:
-        print("\n🚀 Generating README...")
+        print("\n🚀 Generating professional README...")
+        print("⏳ Please wait while I analyze your project and create the README...")
         
         # Create and run the README generation task
-        task = create_readme_task(project_details)
+        task = create_readme_task(project_context)
         crew = Crew(
             agents=[readme_agent],
             tasks=[task],
-            verbose=True
+            verbose=False  # Less verbose for better UX
         )
         
         result = crew.kickoff()
@@ -152,53 +187,35 @@ def handle_readme_generation():
         
         # Ask for user satisfaction
         print("\n🤔 Are you satisfied with this README?")
-        print("1. Yes - Save the file")
-        print("2. No - Improve it")
-        print("3. Exit")
+        satisfaction = input("Type 'Y' if satisfied, or provide feedback for improvements: ").strip()
         
-        try:
-            satisfaction = int(input("\nEnter your choice (1, 2, or 3): "))
+        if satisfaction.upper() == 'Y':
+            # User is satisfied, get save location
+            save_location = get_save_location()
             
-            if satisfaction == 1:
-                # User is satisfied, ask for save location
-                save_location = input("\nEnter the path where you want to save README.md (or press Enter for current directory): ").strip()
+            try:
+                # Create directory if it doesn't exist
+                save_dir = os.path.dirname(save_location)
+                if save_dir and not os.path.exists(save_dir):
+                    os.makedirs(save_dir, exist_ok=True)
                 
-                if not save_location:
-                    save_location = "README.md"
-                elif not save_location.endswith('.md'):
-                    save_location = os.path.join(save_location, "README.md")
-                
-                try:
-                    with open(save_location, 'w', encoding='utf-8') as f:
-                        f.write(str(result))
-                    print(f"✅ README.md saved successfully at: {save_location}")
-                    break
-                except Exception as e:
-                    print(f"❌ Error saving file: {e}")
-                    break
-                    
-            elif satisfaction == 2:
-                # User wants improvements
-                feedback = input("\n💭 What would you like to improve in the README? ").strip()
-                if feedback:
-                    project_details['improvement_feedback'] = feedback
-                    print("\n🔄 Regenerating README with your feedback...")
-                    continue
-                else:
-                    print("❌ Please provide specific feedback for improvement.")
-                    continue
-                    
-            elif satisfaction == 3:
-                # User wants to exit
-                print("👋 Exiting README generator.")
+                with open(save_location, 'w', encoding='utf-8') as f:
+                    f.write(str(result))
+                print(f"✅ README.md saved successfully at: {os.path.abspath(save_location)}")
                 break
-                
-            else:
-                print("❌ Invalid choice! Please select 1, 2, or 3.")
+            except Exception as e:
+                print(f"❌ Error saving file: {e}")
+                print("💡 Please check the path and try again.")
                 continue
                 
-        except ValueError:
-            print("❌ Invalid input! Please enter a number.")
+        elif satisfaction:
+            # User provided feedback
+            print(f"\n🔄 Regenerating README with your feedback: '{satisfaction}'")
+            project_context += f"\n\nADDITIONAL REQUIREMENTS: {satisfaction}"
+            continue
+        else:
+            # Empty input, ask again
+            print("❌ Please provide feedback or type 'Y' if satisfied.")
             continue
 
 def show_main_menu():
