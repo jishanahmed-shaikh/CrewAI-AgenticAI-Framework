@@ -6,6 +6,8 @@
 [![Python](https://img.shields.io/badge/Python-3.11.9-blue.svg)](https://python.org)
 [![CrewAI](https://img.shields.io/badge/CrewAI-Latest-green.svg)](https://crewai.com)
 [![OpenAI](https://img.shields.io/badge/OpenAI-GPT--4-orange.svg)](https://openai.com)
+[![Version](https://img.shields.io/badge/Version-2.1.0-brightgreen.svg)](https://github.com/jishanahmed-shaikh/CrewAI-AgenticAI-Framework)
+[![License](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
 > 🚀 **Welcome to the future of AI collaboration!** This project demonstrates how to build powerful multi-agent systems using CrewAI, where AI agents work together like a real team to solve complex problems.
 
@@ -19,18 +21,28 @@ CrewAI is a cutting-edge framework that enables you to orchestrate role-playing,
 - 🎭 **Role-Based Agents**: Each agent has specific roles and expertise
 - 🔄 **Sequential Task Execution**: Tasks flow logically from one agent to another
 - 🛠️ **Custom Tools**: Extend agents with specialized capabilities
-- 📊 **Verbose Logging**: Track every step of the process
+- 📊 **Advanced Logging**: Comprehensive logging with file and console output
+- 🔍 **Code Review Agent**: AI-powered code analysis for bugs, security, and performance
+- 📄 **Enhanced README Generator**: Professional documentation with extensive context support
+- ⚙️ **Configuration Management**: Customizable settings via config files
+- 📈 **Performance Metrics**: Track agent usage and session analytics
+- 🛡️ **Error Recovery**: Robust error handling and fallback mechanisms
+- ❓ **Built-in Help System**: Comprehensive usage tips and guidance
 
 ## 📁 Project Structure
 
 ```
-📦 CrewAI-Project/
-├── 🐍 main.py              # Interactive multi-agent system
-├── 🔧 test3agents.py       # Advanced 3-agent collaboration
-├── 📋 requirements.txt     # Python dependencies
-├── 📝 Instructions.md      # 📋 Detailed setup guide
+📦 CrewAI-AgenticAI-Framework/
+├── 🐍 main.py              # Enhanced interactive multi-agent system
+├── 🔧 test3agents.py       # Advanced 3-agent collaboration example
+├── ⚙️ config.py            # Configuration settings and parameters
+├── 🔧 utils.py             # Utility functions and helpers
+├── 📋 requirements.txt     # Python dependencies with version pinning
+├── 📝 Instructions.md      # 📋 Comprehensive setup guide
 ├── 🙈 .gitignore          # Git ignore rules
 ├── 🌍 .env                # Environment variables (create this)
+├── 📊 agent_system.log     # Application logs (generated)
+├── 📈 performance_metrics.json # Usage analytics (generated)
 └── 📖 README.md           # This file
 ```
 
@@ -82,35 +94,63 @@ source crew-env/bin/activate
 pip install -r requirements.txt
 ```
 
-## 🎮 Running the Examples
+## 🎮 Running the Enhanced System
 
-### 🌱 Basic Example (Single Agent)
+### 🚀 Main Application (Enhanced Multi-Agent System)
 
-Perfect for beginners! This example shows a single Python developer agent:
+The main application now features 5 specialized agents with advanced capabilities:
 
 ```bash
 python main.py
 ```
 
-**What it does:**
+**🤖 Available Agents:**
 
-- 🤖 Creates a Python Developer agent
-- 📝 Assigns a task to reverse a string
-- ✅ Executes and shows the result
+1. **🐍 Dev Agent**: Python development with custom task support
+   - Pre-built functions (string reversal, palindrome check)
+   - Custom programming tasks with natural language input
+   - Seamless integration with Code Review Agent
 
-### 🚀 Advanced Example (Multi-Agent System)
+2. **📝 Doc Agent**: Comprehensive documentation creation
+   - Technical reports and explanations
+   - Custom documentation tasks
+   - Professional formatting and structure
 
-This showcases the real power of CrewAI with 3 specialized agents:
+3. **📄 Enhanced README Generator**: Professional project documentation
+   - Multi-line context input support
+   - Comprehensive analysis of project requirements
+   - 20+ documentation sections with badges and formatting
+   - Iterative improvement with user feedback
+
+4. **🔍 Code Review Agent**: AI-powered code analysis
+   - **Security Analysis**: Vulnerability detection and best practices
+   - **Performance Review**: Optimization suggestions and bottleneck identification
+   - **Code Quality**: Standards compliance and readability assessment
+   - **Bug Detection**: Logic errors and edge case identification
+   - **Architecture Review**: Design patterns and SOLID principles
+   - **Multiple Input Methods**: File paths, direct paste, or Dev Agent output
+
+5. **❓ Help System**: Built-in guidance and usage tips
+
+**🔄 Smart Workflow Integration:**
+- Generate code with Dev Agent → Immediately review with Code Review Agent
+- Enhanced error handling and recovery mechanisms
+- Session tracking with duration and performance metrics
+- Auto-save functionality for all outputs
+
+### 🧪 Advanced Example (Multi-Agent Collaboration)
+
+Experience collaborative AI with specialized roles:
 
 ```bash
 python test3agents.py
 ```
 
-**Meet the Team:**
+**👥 The Specialized Team:**
 
-- 🔧 **Technician Agent**: Sets up software and environments
-- 🛡️ **Security Agent**: Handles authentication with Keycloak
-- 🧪 **Testing Agent**: Validates everything works perfectly
+- 🔧 **Technician Agent**: Environment setup and software installation
+- 🛡️ **Security Agent**: Authentication and security implementation
+- 🧪 **Testing Agent**: Quality assurance and system validation
 
 ## 🏗️ Understanding the Architecture
 
@@ -174,18 +214,29 @@ class CustomTool(BaseTool):
 - 📊 **Data Analysis Pipeline**: Research → Analysis → Reporting
 - 🛒 **E-commerce Automation**: Product research → Content creation → Marketing
 - 📈 **Financial Planning**: Market analysis → Strategy → Risk assessment
+- 📋 **Documentation Automation**: Requirements → Design → Implementation docs
 
 ### 💻 Development Workflows
 
-- 🔧 **DevOps Pipeline**: Setup → Security → Testing (like our example!)
-- 📱 **App Development**: Planning → Coding → Testing → Deployment
-- 🐛 **Bug Resolution**: Detection → Analysis → Fix → Verification
+- � **Copmplete DevOps Pipeline**: Setup → Security → Testing → Deployment
+- � **BFull-Stack Development**: Planning → Coding → Review → Testing → Documentation
+- 🐛 **Advanced Bug Resolution**: Detection → Analysis → Fix → Review → Verification
+- 🔍 **Code Quality Assurance**: Development → Review → Optimization → Documentation
+- 📄 **Project Documentation**: Context analysis → README generation → Review
 
-### 🎨 Creative Projects
+### �* Creative & Content Projects
 
-- ✍️ **Content Creation**: Research → Writing → Editing → Publishing
-- 🎬 **Video Production**: Scripting → Storyboarding → Editing → Review
-- 🎵 **Music Production**: Composition → Arrangement → Mixing → Mastering
+- ✍️ **Technical Writing**: Research → Writing → Review → Publishing
+- 📚 **Documentation Creation**: Analysis → Structure → Content → Review
+- 🎬 **Content Production**: Planning → Creation → Review → Optimization
+- 🎵 **Creative Workflows**: Ideation → Development → Review → Refinement
+
+### 🔍 Code Analysis & Review
+
+- 🛡️ **Security Auditing**: Vulnerability scanning → Risk assessment → Recommendations
+- ⚡ **Performance Optimization**: Bottleneck identification → Analysis → Solutions
+- 📏 **Code Quality Assessment**: Standards review → Best practices → Improvements
+- 🏗️ **Architecture Review**: Design patterns → Structure analysis → Recommendations
 
 ## 🔧 Troubleshooting
 
@@ -271,16 +322,35 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 </div>
 
+## 🆕 Latest Updates (v2.1.0)
+
+### ✨ New Features
+- 🔍 **Code Review Agent**: Comprehensive code analysis with 7-area coverage
+- 📄 **Enhanced README Generator**: Multi-line input and extensive context processing
+- ⚙️ **Configuration Management**: External config files for customization
+- 📊 **Performance Metrics**: Session tracking and usage analytics
+- 🛡️ **Error Recovery**: Robust fallback mechanisms and error handling
+- ❓ **Help System**: Built-in guidance and usage tips
+
+### 🔧 Improvements
+- 📝 **Advanced Logging**: File and console logging with timestamps
+- 🔄 **Smart Workflow**: Seamless Dev Agent → Code Review integration
+- ⏱️ **Session Tracking**: Duration monitoring and task completion metrics
+- 🛠️ **Utility Functions**: Helper functions for common operations
+- 📦 **Version Pinning**: Stable dependency management
+
 ## 🚀 What's Next?
 
-Ready to build your own AI agent team? Here are some ideas:
+Ready to build your own AI agent team? Here are some advanced ideas:
 
-- 🎯 **Customer Service Crew**: Support → Escalation → Resolution
-- 📊 **Market Research Team**: Data collection → Analysis → Insights
-- 🎨 **Creative Agency**: Brainstorming → Design → Review → Refinement
-- 🏥 **Healthcare Assistant**: Symptoms → Diagnosis → Treatment → Follow-up
+- 🎯 **Customer Service Crew**: Support → Escalation → Resolution → Follow-up
+- 📊 **Market Research Team**: Data collection → Analysis → Insights → Reporting
+- 🎨 **Creative Agency**: Brainstorming → Design → Review → Refinement → Publishing
+- 🏥 **Healthcare Assistant**: Symptoms → Diagnosis → Treatment → Follow-up → Monitoring
+- 🔐 **Security Audit Team**: Scanning → Analysis → Reporting → Remediation
+- 📈 **Business Intelligence**: Data → Analysis → Insights → Recommendations → Implementation
 
-The possibilities are endless! 🌈
+The possibilities are endless with our enhanced framework! 🌈
 
 ---
 *Happy coding! 🎉*
