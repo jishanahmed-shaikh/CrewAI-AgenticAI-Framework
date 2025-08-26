@@ -567,6 +567,22 @@ def handle_readme_generation():
             print("💡 Please try again or check your input.")
             continue
 
+def show_help():
+    """Display help information and usage tips"""
+    print("\n" + "="*MENU_WIDTH)
+    print("❓ HELP & USAGE TIPS")
+    print("="*MENU_WIDTH)
+    print("🐍 Dev Agent: Generate Python functions and custom code")
+    print("📝 Doc Agent: Create comprehensive documentation")
+    print("📄 README Generator: Professional project documentation")
+    print("🔍 Code Review: Analyze code for bugs, security, performance")
+    print("\n💡 Tips:")
+    print("• Use Dev Agent → Code Review for best workflow")
+    print("• README Generator supports multi-line input")
+    print("• Code Review can analyze files or pasted code")
+    print("• All outputs can be saved to files")
+    print("="*MENU_WIDTH)
+
 def show_main_menu():
     """Display the enhanced main menu"""
     print("\n" + "="*MENU_WIDTH)
@@ -576,8 +592,9 @@ def show_main_menu():
     print("2. 📝 Doc Agent (Documentation)")
     print("3. 📄 README Generator (Enhanced Project Documentation)")
     print("4. 🔍 Code Review Agent (Code Analysis & Review)")
-    print("5. 🚪 Exit")
-    print("="*60)
+    print("5. ❓ Help & Tips")
+    print("6. 🚪 Exit")
+    print("="*MENU_WIDTH)
 
 def handle_dev_agent():
     """Handle Dev Agent operations with enhanced input validation"""
@@ -712,7 +729,7 @@ def main():
         show_main_menu()
         
         try:
-            choice = int(input("\nEnter your choice (1, 2, 3, 4, or 5): "))
+            choice = int(input("\nEnter your choice (1, 2, 3, 4, 5, or 6): "))
             
             if choice == 1:
                 performance_metrics['dev_agent_calls'] += 1
@@ -740,6 +757,9 @@ def main():
                 handle_code_review()
                 input("\n📝 Press Enter to continue...")
             elif choice == 5:
+                show_help()
+                input("\n📝 Press Enter to continue...")
+            elif choice == 6:
                 session_end = datetime.now()
                 session_duration = session_end - session_start
                 logger.info(f"Session ended. Duration: {session_duration}")
@@ -748,7 +768,7 @@ def main():
                 print("🚪 Exiting...")
                 break
             else:
-                print("❌ Invalid choice! Please select 1, 2, 3, 4, or 5.")
+                print("❌ Invalid choice! Please select 1, 2, 3, 4, 5, or 6.")
                 
         except ValueError:
             print("❌ Invalid input! Please enter a number.")
