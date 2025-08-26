@@ -1,6 +1,12 @@
 from crewai import Agent, Task, Crew
 import os
 
+# Application Constants
+APP_NAME = "Enhanced AI Agent System"
+VERSION = "2.0.0"
+MENU_WIDTH = 60
+SEPARATOR_WIDTH = 80
+
 # Create Agents
 dev_agent = Agent(
     role="Python Developer",
@@ -537,9 +543,9 @@ def handle_readme_generation():
 
 def show_main_menu():
     """Display the enhanced main menu"""
-    print("\n" + "="*60)
-    print("🤖 Enhanced AI Agent System - Main Menu")
-    print("="*60)
+    print("\n" + "="*MENU_WIDTH)
+    print(f"🤖 {APP_NAME} v{VERSION} - Main Menu")
+    print("="*MENU_WIDTH)
     print("1. 🐍 Dev Agent (Python Development)")
     print("2. 📝 Doc Agent (Documentation)")
     print("3. 📄 README Generator (Enhanced Project Documentation)")
