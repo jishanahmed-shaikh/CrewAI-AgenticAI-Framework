@@ -1,11 +1,28 @@
 from crewai import Agent, Task, Crew
 import os
+import logging
+from datetime import datetime
 
 # Application Constants
 APP_NAME = "Enhanced AI Agent System"
 VERSION = "2.0.0"
 MENU_WIDTH = 60
 SEPARATOR_WIDTH = 80
+
+# Setup logging
+def setup_logging():
+    """Setup application logging"""
+    logging.basicConfig(
+        level=logging.INFO,
+        format='%(asctime)s - %(levelname)s - %(message)s',
+        handlers=[
+            logging.FileHandler('agent_system.log'),
+            logging.StreamHandler()
+        ]
+    )
+    return logging.getLogger(__name__)
+
+logger = setup_logging()
 
 # Create Agents
 dev_agent = Agent(
