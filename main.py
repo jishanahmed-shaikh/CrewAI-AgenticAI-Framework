@@ -3,6 +3,7 @@ import os
 import logging
 from datetime import datetime
 from config import AGENT_CONFIG, UI_CONFIG, FILE_CONFIG, PERFORMANCE_CONFIG
+from utils import save_performance_metrics, load_performance_metrics, format_duration
 
 # Application Constants
 APP_NAME = "Enhanced AI Agent System"
@@ -10,14 +11,8 @@ VERSION = "2.1.0"
 MENU_WIDTH = UI_CONFIG['menu_width']
 SEPARATOR_WIDTH = UI_CONFIG['separator_width']
 
-# Performance tracking
-performance_metrics = {
-    'dev_agent_calls': 0,
-    'doc_agent_calls': 0,
-    'readme_agent_calls': 0,
-    'code_review_calls': 0,
-    'total_tasks_completed': 0
-}
+# Performance tracking - load from file if exists
+performance_metrics = load_performance_metrics()
 
 # Setup logging
 def setup_logging():
@@ -774,8 +769,14 @@ def main():
             elif choice == 6:
                 session_end = datetime.now()
                 session_duration = session_end - session_start
+                formatted_duration = format_duration(session_duration)
+                
+                # Save performance metrics
+                save_performance_metrics(performance_metrics)
+                
                 logger.info(f"Session ended. Duration: {session_duration}")
-                print(f"\n⏱️ Session duration: {session_duration}")
+                print(f"\n⏱️ Session duration: {formatted_duration}")
+                print(f"📊 Tasks completed this session: {sum(performance_metrics.values()) - performance_metrics['total_tasks_completed']}")
                 print("👋 Thank you for using Enhanced AI Agent System!")
                 print("🚪 Exiting...")
                 break
