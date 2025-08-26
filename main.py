@@ -2,12 +2,13 @@ from crewai import Agent, Task, Crew
 import os
 import logging
 from datetime import datetime
+from config import AGENT_CONFIG, UI_CONFIG, FILE_CONFIG, PERFORMANCE_CONFIG
 
 # Application Constants
 APP_NAME = "Enhanced AI Agent System"
-VERSION = "2.0.0"
-MENU_WIDTH = 60
-SEPARATOR_WIDTH = 80
+VERSION = "2.1.0"
+MENU_WIDTH = UI_CONFIG['menu_width']
+SEPARATOR_WIDTH = UI_CONFIG['separator_width']
 
 # Performance tracking
 performance_metrics = {
