@@ -548,7 +548,7 @@ def show_main_menu():
     print("="*60)
 
 def handle_dev_agent():
-    """Handle Dev Agent operations"""
+    """Handle Dev Agent operations with enhanced input validation"""
     while True:
         print("\n🐍 Dev Agent Selected!")
         print("Choose a task:")
@@ -558,7 +558,11 @@ def handle_dev_agent():
         print("4. Back to Main Menu")
         
         try:
-            task_choice = int(input("\nEnter your choice (1, 2, 3, or 4): "))
+            user_input = input("\nEnter your choice (1, 2, 3, or 4): ").strip()
+            if not user_input:
+                print("❌ Please enter a valid choice!")
+                continue
+            task_choice = int(user_input)
             
             if task_choice == 4:
                 print("🔙 Returning to Main Menu...")
