@@ -224,7 +224,7 @@ class CustomTool(BaseTool):
 - 🔍 **Code Quality Assurance**: Development → Review → Optimization → Documentation
 - 📄 **Project Documentation**: Context analysis → README generation → Review
 
-### �* Creative & Content Projects
+### ⭐ Creative & Content Projects
 
 - ✍️ **Technical Writing**: Research → Writing → Review → Publishing
 - 📚 **Documentation Creation**: Analysis → Structure → Content → Review
@@ -354,3 +354,4 @@ The possibilities are endless with our enhanced framework! 🌈
 
 ---
 *Happy coding! 🎉*
+
