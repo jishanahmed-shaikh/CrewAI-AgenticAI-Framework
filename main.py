@@ -21,16 +21,27 @@ performance_metrics = {
 
 # Setup logging
 def setup_logging():
-    """Setup application logging"""
-    logging.basicConfig(
-        level=logging.INFO,
-        format='%(asctime)s - %(levelname)s - %(message)s',
-        handlers=[
-            logging.FileHandler('agent_system.log'),
-            logging.StreamHandler()
-        ]
-    )
-    return logging.getLogger(__name__)
+    """Setup application logging with error recovery"""
+    try:
+        logging.basicConfig(
+            level=logging.INFO,
+            format='%(asctime)s - %(levelname)s - %(message)s',
+            handlers=[
+                logging.FileHandler(FILE_CONFIG['log_file']),
+                logging.StreamHandler()
+            ]
+        )
+        return logging.getLogger(__name__)
+    except Exception as e:
+        # Fallback to console-only logging if file logging fails
+        logging.basicConfig(
+            level=logging.INFO,
+            format='%(asctime)s - %(levelname)s - %(message)s',
+            handlers=[logging.StreamHandler()]
+        )
+        logger = logging.getLogger(__name__)
+        logger.warning(f"File logging failed, using console only: {e}")
+        return logger
 
 logger = setup_logging()
 
@@ -778,8 +789,10 @@ def main():
             print("🚪 Exiting...")
             break
         except Exception as e:
+            logger.error(f"Unexpected error in main loop: {e}")
             print(f"❌ An error occurred: {e}")
             print("💡 The system will continue running. Please try again.")
+            print("🔄 If problems persist, try restarting the application.")
 
 if __name__ == "__main__":
     main()
