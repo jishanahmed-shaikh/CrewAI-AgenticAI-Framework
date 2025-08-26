@@ -692,8 +692,12 @@ def handle_doc_agent():
 
 def main():
     """Enhanced main application loop with code review integration"""
+    session_start = datetime.now()
+    logger.info(f"Starting {APP_NAME} v{VERSION}")
+    
     print("🎉 Welcome to the Enhanced AI Agent System!")
     print("💡 Now featuring advanced README generation and comprehensive code review!")
+    print(f"📅 Session started: {session_start.strftime('%Y-%m-%d %H:%M:%S')}")
     
     while True:
         show_main_menu()
@@ -723,7 +727,11 @@ def main():
                 handle_code_review()
                 input("\n📝 Press Enter to continue...")
             elif choice == 5:
-                print("\n👋 Thank you for using Enhanced AI Agent System!")
+                session_end = datetime.now()
+                session_duration = session_end - session_start
+                logger.info(f"Session ended. Duration: {session_duration}")
+                print(f"\n⏱️ Session duration: {session_duration}")
+                print("👋 Thank you for using Enhanced AI Agent System!")
                 print("🚪 Exiting...")
                 break
             else:
