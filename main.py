@@ -9,6 +9,15 @@ VERSION = "2.0.0"
 MENU_WIDTH = 60
 SEPARATOR_WIDTH = 80
 
+# Performance tracking
+performance_metrics = {
+    'dev_agent_calls': 0,
+    'doc_agent_calls': 0,
+    'readme_agent_calls': 0,
+    'code_review_calls': 0,
+    'total_tasks_completed': 0
+}
+
 # Setup logging
 def setup_logging():
     """Setup application logging"""
@@ -706,6 +715,7 @@ def main():
             choice = int(input("\nEnter your choice (1, 2, 3, 4, or 5): "))
             
             if choice == 1:
+                performance_metrics['dev_agent_calls'] += 1
                 handle_dev_agent()
                 
                 # Offer code review after dev agent completes
@@ -717,12 +727,15 @@ def main():
                     handle_code_review()
                     
             elif choice == 2:
+                performance_metrics['doc_agent_calls'] += 1
                 handle_doc_agent()
             elif choice == 3:
+                performance_metrics['readme_agent_calls'] += 1
                 print("\n📄 Enhanced README Generator Selected!")
                 handle_readme_generation()
                 input("\n📝 Press Enter to continue...")
             elif choice == 4:
+                performance_metrics['code_review_calls'] += 1
                 print("\n🔍 Code Review Agent Selected!")
                 handle_code_review()
                 input("\n📝 Press Enter to continue...")
