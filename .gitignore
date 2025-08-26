@@ -129,6 +129,9 @@ env.bak/
 venv.bak/
 crew-env/
 
+# Code Review Agent Outputs
+CodeReviews/
+
 # Spyder project settings
 .spyderproject
 .spyproject
