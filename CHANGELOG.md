@@ -2,9 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
-## [2.1.0] - 2024-12-19
+## [2.1.0] - 2024-08-26
 
 ### ✨ Added
+
 - **🔍 Code Review Agent**: Comprehensive code analysis with 7-area coverage
   - Security vulnerability detection
   - Performance optimization suggestions
@@ -57,6 +58,7 @@ All notable changes to this project will be documented in this file.
   - Error handling utilities
 
 ### 🔧 Improved
+
 - **Enhanced Input Validation**: Better error handling for user inputs
 - **Smart Workflow Integration**: Seamless Dev Agent → Code Review workflow
 - **Session Management**: Duration tracking and task completion statistics
@@ -65,20 +67,23 @@ All notable changes to this project will be documented in this file.
 - **Dependency Management**: Version pinning for stable installations
 
 ### 🔄 Changed
+
 - **Main Menu**: Expanded from 4 to 6 options including Help and Code Review
 - **Application Structure**: Added configuration and utility modules
 - **Logging System**: Enhanced from basic to comprehensive logging
 - **Version**: Updated to v2.1.0 with proper version tracking
 
 ### 📦 Dependencies
+
 - **Updated**: All dependencies with version pinning for stability
 - **Added**: `colorama>=0.4.6` and `rich>=13.0.0` for enhanced UI (future use)
 
 ---
 
-## [2.0.0] - 2024-12-18
+## [2.0.0] - 2025-08-07
 
 ### ✨ Added
+
 - **🐍 Dev Agent**: Python development with custom task support
 - **📝 Doc Agent**: Comprehensive documentation creation
 - **📄 README Generator**: Professional project documentation
@@ -86,6 +91,7 @@ All notable changes to this project will be documented in this file.
 - **🤖 Multi-Agent Collaboration**: Example with 3 specialized agents
 
 ### 🏗️ Initial Features
+
 - CrewAI framework integration
 - OpenAI GPT-4 model support
 - Environment variable configuration
@@ -96,9 +102,10 @@ All notable changes to this project will be documented in this file.
 
 ---
 
-## [1.0.0] - 2024-12-17
+## [1.0.0] - 2025-07-29
 
 ### 🎉 Initial Release
+
 - Basic CrewAI multi-agent system
 - Single agent examples
 - Simple task execution
@@ -109,6 +116,7 @@ All notable changes to this project will be documented in this file.
 ## 🔮 Upcoming Features (Roadmap)
 
 ### v2.2.0 (Planned)
+
 - **🧪 Test Generator Agent**: Automated unit test creation
 - **🔧 DevOps Agent**: CI/CD pipeline and infrastructure code generation
 - **🎨 Enhanced UI**: Rich console interface with colors and progress bars
@@ -116,6 +124,7 @@ All notable changes to this project will be documented in this file.
 - **🔌 Plugin System**: Extensible agent architecture
 
 ### v2.3.0 (Planned)
+
 - **🌐 Web Interface**: Browser-based agent management
 - **📊 Data Analysis Agent**: CSV/JSON data processing and insights
 - **🔒 Security Audit Agent**: Comprehensive security analysis
