@@ -128,6 +128,8 @@ ENV/
 env.bak/
 venv.bak/
 crew-env/
+crewai/
+crewai_workshop/
 
 # Code Review Agent Outputs
 CodeReviews/
@@ -172,3 +174,7 @@ cython_debug/
 Thumbs.db
 ehthumbs.db
 Desktop.ini
+
+# Performance and logs
+performance_metrics.json
+agent_system.log
