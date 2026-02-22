@@ -20,22 +20,22 @@ def print_header(text):
 
 def print_success(text):
     """Print success message"""
-    print(f"✅ {text}")
+    print(f"[OK] {text}")
 
 
 def print_error(text):
     """Print error message"""
-    print(f"❌ {text}")
+    print(f"[ERROR] {text}")
 
 
 def print_info(text):
     """Print info message"""
-    print(f"ℹ️  {text}")
+    print(f"[INFO] {text}")
 
 
 def check_python_version():
     """Check if Python version is 3.11+"""
-    print_header("🐍 Checking Python Version")
+    print_header("Checking Python Version")
     
     version = sys.version_info
     print(f"Current Python: {version.major}.{version.minor}.{version.micro}")
@@ -49,7 +49,7 @@ def check_python_version():
 
 def create_virtual_env():
     """Create virtual environment"""
-    print_header("🔧 Setting Up Virtual Environment")
+    print_header("Setting Up Virtual Environment")
     
     venv_path = "crewai_workshop"
     
@@ -81,7 +81,7 @@ def get_activation_command(venv_path):
 
 def install_dependencies(venv_path):
     """Install required dependencies"""
-    print_header("📦 Installing Dependencies")
+    print_header("Installing Dependencies")
     
     if platform.system() == "Windows":
         pip_path = os.path.join(venv_path, "Scripts", "pip.exe")
@@ -95,7 +95,7 @@ def install_dependencies(venv_path):
 
 def setup_env_file():
     """Create and configure .env file"""
-    print_header("🔑 Setting Up Environment Variables")
+    print_header("Setting Up Environment Variables")
     
     env_path = ".env"
     
@@ -107,15 +107,15 @@ def setup_env_file():
             return
     
     print("\n" + "=" * 70)
-    print("  🎯 GROQ API Key Setup (FREE)")
+    print("  GROQ API Key Setup (FREE)")
     print("=" * 70)
     print("\nGROQ provides free access to powerful AI models!")
-    print("   • Free tier available")
-    print("   • Fast inference")
-    print("   • No credit card required")
-    print("   • Get key: https://console.groq.com/keys\n")
+    print("   * Free tier available")
+    print("   * Fast inference")
+    print("   * No credit card required")
+    print("   * Get key: https://console.groq.com/keys\n")
     
-    print_info("\n🔗 Getting GROQ API Key:")
+    print_info("\nGetting GROQ API Key:")
     print("   1. Visit: https://console.groq.com/keys")
     print("   2. Sign up (free)")
     print("   3. Create API key")
@@ -137,13 +137,13 @@ def setup_env_file():
     with open(env_path, 'w') as f:
         f.write(env_content)
     
-    print_success(f"✨ Environment file created: {env_path}")
-    print_info("⚠️  IMPORTANT: Never commit .env to version control!")
+    print_success(f"Environment file created: {env_path}")
+    print_info("IMPORTANT: Never commit .env to version control!")
 
 
 def verify_setup():
     """Verify the setup is complete"""
-    print_header("✅ Verifying Setup")
+    print_header("Verifying Setup")
     
     checks = {
         ".env file": os.path.exists(".env"),
@@ -154,7 +154,7 @@ def verify_setup():
     
     all_good = True
     for check, result in checks.items():
-        status = "✅" if result else "❌"
+        status = "[OK]" if result else "[ERROR]"
         print(f"{status} {check}")
         if not result:
             all_good = False
@@ -164,44 +164,42 @@ def verify_setup():
 
 def print_next_steps(venv_path):
     """Print next steps for the user"""
-    print_header("🎉 Setup Complete!")
+    print_header("Setup Complete!")
     
-    print("📋 Next Steps:\n")
+    print("Next Steps:\n")
     
     if platform.system() == "Windows":
-        print(f"1️⃣  Activate virtual environment:")
+        print(f"1. Activate virtual environment:")
         print(f"   {venv_path}\\Scripts\\activate\n")
     else:
-        print(f"1️⃣  Activate virtual environment:")
+        print(f"1. Activate virtual environment:")
         print(f"   source {venv_path}/bin/activate\n")
     
-    print("2️⃣  Verify your .env file has API keys\n")
+    print("2. Verify your .env file has API keys\n")
     
-    print("3️⃣  Run the workshop:")
+    print("3. Run the workshop:")
     print("   python main.py\n")
     
-    print("4️⃣  Try the multi-agent example:")
+    print("4. Try the multi-agent example:")
     print("   python test3agents.py\n")
     
-    print("📚 Documentation:")
-    print("   • README.md - Project overview")
-    print("   • Instructions.md - Detailed guide\n")
+    print("Documentation:")
+    print("   * README.md - Project overview")
+    print("   * Instructions.md - Detailed guide\n")
     
-    print("🆘 Troubleshooting:")
-    print("   • Check .env file has correct API keys")
-    print("   • Ensure virtual environment is activated")
-    print("   • Run: pip install -r requirements.txt\n")
+    print("Troubleshooting:")
+    print("   * Check .env file has correct API keys")
+    print("   * Ensure virtual environment is activated")
+    print("   * Run: pip install -r requirements.txt\n")
 
 
 def main():
     """Main setup flow"""
     print("\n")
-    print("╔" + "=" * 68 + "╗")
-    print("║" + " " * 68 + "║")
-    print("║" + "  🚀 CrewAI Workshop - Automated Setup".center(68) + "║")
-    print("║" + "  Learn Agentic AI with Free Tools".center(68) + "║")
-    print("║" + " " * 68 + "║")
-    print("╚" + "=" * 68 + "╝")
+    print("=" * 70)
+    print("  CrewAI Workshop - Automated Setup".center(70))
+    print("  Learn Agentic AI with Free Tools".center(70))
+    print("=" * 70)
     
     try:
         check_python_version()
@@ -211,7 +209,7 @@ def main():
         
         if verify_setup():
             print_next_steps(venv_path)
-            print_success("🎊 Workshop is ready to use!")
+            print_success("Workshop is ready to use!")
         else:
             print_error("Some setup steps failed. Please check the errors above.")
             sys.exit(1)
