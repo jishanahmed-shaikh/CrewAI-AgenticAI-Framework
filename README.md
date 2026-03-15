@@ -23,7 +23,7 @@ A hands-on workshop to learn how AI agents work together to solve complex proble
 
 ### Step 1: Star & Fork the Repository
 
-1. Click **⭐ Star** button (top right)
+1. Click **⭐ Star** button (top right) - VERY IMPORTANT ⚠️🚨 [if you miss this, you will have 20+ Errors in your terminal]
 2. Click **Fork** button (top right)
 3. Select your account
 
